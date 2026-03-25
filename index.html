@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Jess — Portfolio</title>
+    <meta name="description" content="Personal portfolio website MVP." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+
+    <div id="top" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Jess</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" aria-label="Primary navigation" data-nav>
+          <a class="nav__link" href="#about" data-nav-link>About Me</a>
+          <a class="nav__link" href="#experience" data-nav-link>Experience</a>
+          <a class="nav__link" href="#education" data-nav-link>Education</a>
+          <a class="nav__link" href="#skills" data-nav-link>Skills</a>
+          <a class="nav__link" href="#projects" data-nav-link>Projects</a>
+          <a class="nav__link" href="#contact" data-nav-link>Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" aria-label="Intro">
+        <div class="container hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow">Portfolio</p>
+            <h1 class="hero__title">Hi, I'm Jess.</h1>
+            <p class="hero__subtitle">
+              I see myself as a design generalist, interersted in product thinking, and know a bit of everything
+              - frontend, backend, AI, data. My ultimate goal is to solve more problems with design and products.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#projects">View Projects</a>
+              <a class="btn btn--ghost" href="#contact">Talk to Me</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Me -->
+      <section id="about" class="section section--about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="about-title">About Me</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="profile-card">
+              <div class="profile-card__photoWrap" aria-hidden="true">
+                <div class="profile-card__initials" aria-hidden="true">J</div>
+              </div>
+              <div class="profile-card__body">
+                <h3 class="profile-card__name">Jess</h3>
+                <p class="profile-card__role">Product Designer</p>
+              </div>
+            </div>
+
+            <div class="about-content">
+              <div class="card">
+                <h3 class="card__title">Quick Snapshot</h3>
+                <div class="kv-grid">
+                  <div class="kv">
+                    <dt>Current interests</dt>
+                    <dd>User research</dd>
+                  </div>
+                  <div class="kv">
+                    <dt>Location</dt>
+                    <dd>Helsinki, Finland</dd>
+                  </div>
+                  <div class="kv">
+                    <dt>Collaboration</dt>
+                    <dd>Open to full-time, contract, and speaking</dd>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card__title">What I do</h3>
+                <ul class="list">
+                  <li>Turn ideas into structured, testable features.</li>
+                  <li>Design UI that feels fast, clear, and accessible.</li>
+                  <li>Collaborate across design, product, and engineering.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section" aria-labelledby="experience-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="experience-title">Key Professional Experience</h2>
+            <p class="section__subtitle">A concise list of roles. Customize the bullets with real details.</p>
+          </div>
+
+          <div class="experience-grid">
+            <article class="role-card">
+              <div class="role-card__head">
+                <h3 class="role-card__title">Product Designer</h3>
+                <p class="role-card__company">Aibidia</p>
+              </div>
+              <ul class="role-card__bullets">
+                <li>Designed end-to-end product flows (add specifics).</li>
+                <li>Partnered with engineering to refine UI and usability (add specifics).</li>
+                <li>Contributed to AI-related UX decisions (add specifics).</li>
+              </ul>
+            </article>
+
+            <article class="role-card">
+              <div class="role-card__head">
+                <h3 class="role-card__title">Product Designer</h3>
+                <p class="role-card__company">Syllotips</p>
+              </div>
+              <ul class="role-card__bullets">
+                <li>Shaped information architecture and interaction patterns (add specifics).</li>
+                <li>Improved clarity of complex states and edge cases (add specifics).</li>
+                <li>Iterated on prototypes to reduce risk (add specifics).</li>
+              </ul>
+            </article>
+
+            <article class="role-card">
+              <div class="role-card__head">
+                <h3 class="role-card__title">Product Designer</h3>
+                <p class="role-card__company">Smarlty</p>
+              </div>
+              <ul class="role-card__bullets">
+                <li>Designed UX for product features (add specifics).</li>
+                <li>Created reusable UI patterns to keep experiences consistent (add specifics).</li>
+                <li>Partnered cross-functionally to align on outcomes (add specifics).</li>
+              </ul>
+            </article>
+
+            <article class="role-card">
+              <div class="role-card__head">
+                <h3 class="role-card__title">UX Design Intern & Thesis Worker</h3>
+                <p class="role-card__company">ABB</p>
+              </div>
+              <ul class="role-card__bullets">
+                <li>Supported UX research and workflow mapping (add specifics).</li>
+                <li>Produced thesis-related design work and prototypes (add specifics).</li>
+                <li>Documented findings and collaborated with stakeholders (add specifics).</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section" aria-labelledby="education-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="education-title">Education</h2>
+            <p class="section__subtitle">Degrees and relevant programs.</p>
+          </div>
+
+          <div class="education-grid">
+            <article class="card education-card">
+              <h3 class="card__title">Master of Arts</h3>
+              <div class="education-meta">
+                <p class="education-program">Collaborative and Industrial Design</p>
+                <div class="kv-grid" aria-label="Education details">
+                  <div class="kv">
+                    <dt>University</dt>
+                    <dd>Aalto University</dd>
+                  </div>
+                  <div class="kv">
+                    <dt>Years</dt>
+                    <dd>2019 - 2021</dd>
+                  </div>
+                </div>
+              </div>
+              <p class="education-note">
+                Add 1–2 highlights (thesis topic, notable projects, or skills) once you have them.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="skills-title">Skills</h2>
+            <p class="section__subtitle">A focused set of design strengths and product methods.</p>
+          </div>
+
+          <div class="skills-grid">
+            <article class="card skills-card">
+              <h3 class="card__title">Core Design Skills</h3>
+              <div class="chip-wrap" aria-label="Core design skills">
+                <span class="pill">Product Thinking</span>
+                <span class="pill">UX Strategy</span>
+                <span class="pill">Interaction Design</span>
+                <span class="pill">Information Architecture</span>
+                <span class="pill">Prototyping</span>
+                <span class="pill">Design Systems</span>
+                <span class="pill">Accessibility</span>
+                <span class="pill">User Research</span>
+                <span class="pill">Usability Testing</span>
+              </div>
+            </article>
+
+            <article class="card skills-card">
+              <h3 class="card__title">AI Tooling & Methods</h3>
+              <div class="chip-wrap" aria-label="AI-related methods">
+                <span class="pill">Generative AI UX</span>
+                <span class="pill">Human-in-the-loop</span>
+                <span class="pill">Workflow Simplification</span>
+                <span class="pill">Trust & Transparency</span>
+                <span class="pill">Complex State Design</span>
+                <span class="pill">Evaluation & Iteration</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="skills-tools">
+            <article class="card">
+              <h3 class="card__title">Tools</h3>
+              <div class="chip-wrap" aria-label="Tools">
+                <span class="pill">Figma</span>
+                <span class="pill">FigJam</span>
+                <span class="pill">Miro</span>
+                <span class="pill">V0</span>
+                <span class="pill">Cursor</span>
+                <span class="pill">Loveable</span>
+                <span class="pill">Prototyping & Motion</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="projects"
+        class="section"
+        aria-labelledby="projects-title"
+        data-owner-email="guqfjess@163.com"
+      >
+        <div class="container">
+          <div class="section__head">
+            <h2 id="projects-title">Projects</h2>
+            <p class="section__subtitle">Project names are listed here. Request access to view details.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card card">
+              <h3 class="project-card__title">Product-led Onboarding</h3>
+              <p class="project-card__desc">Short description of what you built and why it matters.</p>
+
+              <button
+                type="button"
+                class="btn btn--primary project-card__requestBtn"
+                data-request-btn
+                data-project-title="Product-led Onboarding"
+                aria-controls="request-form-1"
+              >
+                request to view project
+              </button>
+
+              <form class="request-form" id="request-form-1" data-request-form hidden>
+                <label class="request-form__label" for="request-email-1">Your email</label>
+                <input
+                  class="request-form__input"
+                  id="request-email-1"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit" class="btn btn--primary request-form__sendBtn" data-request-send>
+                  Send
+                </button>
+                <p class="request-form__hint">
+                  This opens a web email compose page.
+                </p>
+              </form>
+            </article>
+
+            <article class="project-card card">
+              <h3 class="project-card__title">Syllotips Knowledge Base Management</h3>
+              <p class="project-card__desc">Short description of what you built and why it matters.</p>
+
+              <button
+                type="button"
+                class="btn btn--primary project-card__requestBtn"
+                data-request-btn
+                data-project-title="Syllotips Knowledge Base Management"
+                aria-controls="request-form-2"
+              >
+                request to view project
+              </button>
+
+              <form class="request-form" id="request-form-2" data-request-form hidden>
+                <label class="request-form__label" for="request-email-2">Your email</label>
+                <input
+                  class="request-form__input"
+                  id="request-email-2"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit" class="btn btn--primary request-form__sendBtn" data-request-send>
+                  Send
+                </button>
+                <p class="request-form__hint">
+                  This opens a web email compose page.
+                </p>
+              </form>
+            </article>
+
+            <article class="project-card card">
+              <h3 class="project-card__title">Syllotips Knowledge Base Selector</h3>
+              <p class="project-card__desc">Short description of what you built and why it matters.</p>
+
+              <button
+                type="button"
+                class="btn btn--primary project-card__requestBtn"
+                data-request-btn
+                data-project-title="Syllotips Knowledge Base Selector"
+                aria-controls="request-form-3"
+              >
+                request to view project
+              </button>
+
+              <form class="request-form" id="request-form-3" data-request-form hidden>
+                <label class="request-form__label" for="request-email-3">Your email</label>
+                <input
+                  class="request-form__input"
+                  id="request-email-3"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit" class="btn btn--primary request-form__sendBtn" data-request-send>
+                  Send
+                </button>
+                <p class="request-form__hint">
+                  This opens a web email compose page.
+                </p>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="contact-title">Contact / Talk to Me</h2>
+            <p class="section__subtitle">Have a product problem to solve? Send me a message.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card">
+              <h3 class="card__title">Send Email</h3>
+              <p class="resume-note" style="margin-top: 0;">This opens a web email compose page.</p>
+              <a
+                class="btn btn--primary contact-sendBtn"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=guqfjess%40163.com&su=Portfolio%20inquiry"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Send Email
+              </a>
+              <p class="contact-note">
+                This uses Gmail compose in a new tab.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__text">© <span id="year"></span> Jess. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
