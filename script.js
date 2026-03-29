@@ -1,4 +1,5 @@
 console.log("SCRIPT LOADED");
+console.log("clicked");
 
 function setActiveNavOnScroll(){
   const links = Array.from(document.querySelectorAll("[data-nav-link]"));
