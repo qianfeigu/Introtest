@@ -1,3 +1,5 @@
+console.log("SCRIPT LOADED");
+
 function setActiveNavOnScroll(){
   const links = Array.from(document.querySelectorAll("[data-nav-link]"));
   const sections = links
@@ -5,9 +7,10 @@ function setActiveNavOnScroll(){
     .filter(Boolean);
 
   const update = () => {
-    const y = window.scrollY + 120; // header offset
+    const y = window.scrollY + 120;
 
-    let currentId = null;
+    let currentId = sections[0] ? sections[0].id : null;
+
     for (const section of sections){
       const top = section.offsetTop;
       const bottom = top + section.offsetHeight;
@@ -20,7 +23,9 @@ function setActiveNavOnScroll(){
     for (const a of links){
       const target = a.getAttribute("href").slice(1);
       const isActive = currentId === target;
+
       a.classList.toggle("is-active", isActive);
+
       if (isActive){
         a.setAttribute("aria-current", "page");
       } else {
@@ -43,10 +48,10 @@ function setupNavToggle(){
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close mobile menu after clicking a link
   nav.addEventListener("click", (e) => {
     const target = e.target;
     if (!(target instanceof Element)) return;
+
     const link = target.closest("a[href^='#']");
     if (!link) return;
 
@@ -70,13 +75,16 @@ function setupSmoothScrolling(){
     const el = document.getElementById(id);
     if (!el) return;
 
-    // Respect reduced motion via CSS media query + user agent settings
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-      return;
-    }
-
     e.preventDefault();
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    el.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
   });
 }
 
@@ -84,6 +92,51 @@ function setupFooterYear(){
   const year = document.getElementById("year");
   if (!year) return;
   year.textContent = String(new Date().getFullYear());
+}
+
+function trackClickEvent(eventName){
+  const payload = {
+    event: eventName,
+    timestamp: new Date().toISOString(),
+  };
+
+  fetch("https://levorotatory-preobviously-thurman.ngrok-free.dev/api/portfolio-event", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  })
+    .then((res) => {
+      if (!res.ok){
+        console.error(`trackClickEvent failed with status ${res.status}`, payload);
+      }
+    })
+    .catch((err) => {
+      console.error("trackClickEvent network error:", err);
+    });
+}
+
+function setupTestButtonClick(){
+  const testBtn = document.getElementById("testBtn");
+  if (!testBtn) return;
+
+  testBtn.addEventListener("click", async () => {
+    try {
+      const res = await fetch("https://levorotatory-preobviously-thurman.ngrok-free.dev/api/portfolio-event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ test: 123 }),
+      });
+
+      if (!res.ok){
+        throw new Error(`Request failed: ${res.status}`);
+      }
+
+      console.log("testBtn portfolio-event success");
+    } catch (err) {
+      console.error("testBtn portfolio-event failed:", err);
+    }
+  });
 }
 
 function setupProjectRequests(){
@@ -94,7 +147,7 @@ function setupProjectRequests(){
   const requestButtons = Array.from(document.querySelectorAll("[data-request-btn]"));
   const requestForms = Array.from(document.querySelectorAll("[data-request-form]"));
 
-  if (requestButtons.length === 0 || requestForms.length === 0) return;
+  if (!requestButtons.length || !requestForms.length) return;
 
   const hideAllForms = () => {
     for (const form of requestForms){
@@ -103,10 +156,13 @@ function setupProjectRequests(){
   };
 
   const prefersReducedMotion =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   for (const btn of requestButtons){
     btn.addEventListener("click", () => {
+      trackClickEvent("request-to-view-project");
+
       const formId = btn.getAttribute("aria-controls");
       if (!formId) return;
 
@@ -130,7 +186,7 @@ function setupProjectRequests(){
       e.preventDefault();
 
       if (!ownerEmail){
-        alert("Recipient email is missing. Update `data-owner-email` on the Projects section.");
+        alert("Missing owner email.");
         return;
       }
 
@@ -139,19 +195,23 @@ function setupProjectRequests(){
       if (!visitorEmail) return;
 
       const formId = form.getAttribute("id");
+
       const matchingButton = formId
         ? requestButtons.find((b) => b.getAttribute("aria-controls") === formId)
         : null;
-      const projectTitle = matchingButton ? matchingButton.getAttribute("data-project-title") : "";
+
+      const projectTitle = matchingButton
+        ? matchingButton.getAttribute("data-project-title")
+        : "";
 
       const subject = `Project access request: ${projectTitle || "Project"}`;
+
       const bodyText = [
         "Hi Jess,",
         "",
-        `I'd like to request access to the project "${projectTitle || "Project"}".`,
+        `I'd like access to "${projectTitle || "Project"}".`,
         `My email: ${visitorEmail}`,
         "",
-        "Thanks,",
         visitorEmail,
       ].join("\n");
 
@@ -170,5 +230,14 @@ setActiveNavOnScroll();
 setupNavToggle();
 setupSmoothScrolling();
 setupFooterYear();
+setupTestButtonClick();
 setupProjectRequests();
 
+/* single safe binding */
+const contactSendBtn = document.querySelector(".contact-sendBtn");
+
+if (contactSendBtn){
+  contactSendBtn.addEventListener("click", () => {
+    trackClickEvent("send-email");
+  });
+}
